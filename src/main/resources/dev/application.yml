@@ -1,0 +1,59 @@
+﻿server:
+  port: 8887
+# for framework
+spring:
+  application:
+    name: scrh_business_server
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/prcrh?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    initialize: true
+    schema: classpath*:schema-*.sql
+    data: classpath*:data-*.sql
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 1
+      min-idle: 1
+      max-active: 3
+      max-wait: 2000
+      validation-query: SELECT 1 FROM DUAL
+      # 验证连接的有效性
+      test-while-idle: true
+      # 空闲连接回收的时间间隔，与test-while-idle一起使用，设置10分钟, 单位是毫秒
+      time-between-eviction-runs-millis: 600000
+      # 配置一个连接在池中最小生存的时间，设置30分钟, 单位是毫秒
+      min-evictable-idle-time-millis: 1800000
+      # 打开PSCache，并且指定每个连接上PSCache的大小(rowPrefetchCount)
+      pool-prepared-statements: true
+      # 内存大小为rowSize*rowPrefetchCount,rowSize = col_1_size + col_2_size + ... + col_n_size
+      max-open-prepared-statements: 20
+      # 连接初始化时执行sql保证第一次sql快速完成
+      connection-init-sqls: SELECT 1 FROM DUAL
+mybatis:
+  type-aliases-package: cn.com.scrh.scrh_business_server.model
+  mapper-locations: classpath: mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+# 参考：
+# https://github.com/pagehelper/Mybatis-PageHelper/blob/master/wikis/en/HowToUse.md
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  pageSizeZero: true
+  params: count=countSql
+# 本工程相关业务配置如下
+scrh: 
+  rest:
+    # http建立连接的超时时间
+    connectTimeout: "6000"
+    # http传递数据的超时时间
+    readTimeout: "6000"
+  # 分批导入数据时每次操作的数据量  
+  batchSize: "500"
+  http:
+    multipart:
+      # 设置单个文件的大小(byte)
+      maxFileSize : 10485760
