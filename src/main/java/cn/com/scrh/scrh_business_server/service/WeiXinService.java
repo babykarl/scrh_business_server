@@ -27,6 +27,7 @@ public class WeiXinService {
 	
 	@Autowired
 	private WeiXinDao weiXinDao;
+	
     @Value("${scrh.minProgramAppId")
     private String minProgramAppId;
 

@@ -14,6 +14,7 @@ import cn.com.scrh.scrh_business_server.model.db.UserInfo;
 */
 @Repository
 public class WeiXinDao {
+	
 	@Autowired
 	private WeiXinMapper weiXinMapper;
 	/**

@@ -6,8 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import cn.com.scrh.scrh_business_server.commons.Constant;
 import cn.com.scrh.scrh_business_server.controller.BaseController;
@@ -23,7 +23,8 @@ import cn.com.scrh.scrh_business_server.service.WeiXinService;
 * 类说明
 */
 
-@Controller
+@RestController
+@RequestMapping(value = "/v1/api/")
 public class WeiXinController extends BaseController {
 
 	@Autowired
@@ -36,11 +37,19 @@ public class WeiXinController extends BaseController {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value = "/login.action")
+	@RequestMapping(value = "/login")
 	public BusinessResultData weiXinLogin(HttpServletRequest request,HttpServletResponse response){
 		
 		UserInfoResp userInfoResp = weiXinService.getOpenId(request);
 		BusinessResultData respBody = new BusinessResultData(Constant.SUCCESS, Constant.NOTIFY_SUCCESS, userInfoResp);
+		return respBody;
+	}
+	
+	@RequestMapping(value = "/test")
+	public BusinessResultData test(HttpServletRequest request,HttpServletResponse response){
+		
+//		UserInfoResp userInfoResp = weiXinService.getOpenId(request);
+		BusinessResultData respBody = new BusinessResultData();
 		return respBody;
 	}
 	
