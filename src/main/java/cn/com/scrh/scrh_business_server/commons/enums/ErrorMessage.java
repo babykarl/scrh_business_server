@@ -33,8 +33,12 @@ public enum ErrorMessage {
     ENUM_NOT_EXIST("0506", "This data not exist in Enum"),
     /** 学校新建失败 */
     SCHOOL_CREATE_FAIL("0601", "school create fail"),
-    /** 学校新建失败 */
-    BALUMAS_QUALIFICATION_FAIL("0602", "balumas qualification fail");
+    /** 校友认证失败 */
+    BALUMAS_QUALIFICATION_FAIL("0602", "balumas qualification fail"),
+    /** 企业新建失败 */
+    COMPANY_CREATE_FAIL("0603", "company create fail"),
+    /** 企业认证呢个失败 */
+    COMPANY_QUALIFICATION_FAIL("0603", "company qualification fail");
     /** 异常编号 */
     private String code;
     /** 异常描述信息 */
