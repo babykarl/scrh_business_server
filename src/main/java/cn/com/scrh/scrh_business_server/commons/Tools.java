@@ -3,6 +3,7 @@ package cn.com.scrh.scrh_business_server.commons;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.UUID;
@@ -32,6 +33,14 @@ public class Tools {
         return date;
     }
 
+    /**
+     * 获取当前时间yyyyMMddhhmmss
+     * 
+     * @return 返回当前时间
+     */
+    public static LocalDateTime getDateTime() {
+        return LocalDateTime.now().withNano(0);
+    }
 }
 
 

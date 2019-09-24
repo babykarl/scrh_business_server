@@ -31,8 +31,10 @@ public enum ErrorMessage {
     DATA_HAS_EXIST("0505", "Data exists"),
     /** 数据不在枚举中 */
     ENUM_NOT_EXIST("0506", "This data not exist in Enum"),
-    /** 标签规格名称已被使用 */
-    TAG_TYPE_HAS_USED("0304", "TagType name has been used");
+    /** 学校新建失败 */
+    SCHOOL_CREATE_FAIL("0601", "school create fail"),
+    /** 学校新建失败 */
+    BALUMAS_QUALIFICATION_FAIL("0602", "balumas qualification fail");
     /** 异常编号 */
     private String code;
     /** 异常描述信息 */

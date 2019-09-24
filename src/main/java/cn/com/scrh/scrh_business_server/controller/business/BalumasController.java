@@ -16,11 +16,13 @@ import cn.com.scrh.scrh_business_server.commons.Constant;
 import cn.com.scrh.scrh_business_server.commons.Tools;
 import cn.com.scrh.scrh_business_server.controller.BaseController;
 import cn.com.scrh.scrh_business_server.model.BusinessResultData;
+import cn.com.scrh.scrh_business_server.model.balumas.BalumasQualificationRequest;
 import cn.com.scrh.scrh_business_server.model.balumas.BalumasRequest;
 import cn.com.scrh.scrh_business_server.model.balumas.BalumasResp;
 import cn.com.scrh.scrh_business_server.service.BalumasService;
 
 /**
+ * 校友相关信息操作
 * @author karl E-mail:1834007615@qq.com
 * @version 创建时间：2019年9月1日 下午4:11:38
 * 类说明
@@ -34,15 +36,20 @@ public class BalumasController extends BaseController {
 	@Autowired
 	private BalumasService balumasService;
 	
+	/**
+	 * 校友认证
+	 * @param reqBody 请求参数
+	 * @param bindingResult 校验结果
+	 * @return 认证结果
+	 */
 	@RequestMapping(value = "aaa", method = RequestMethod.GET)
-	@ResponseBody
-	public BusinessResultData findBalumasInfo(@Valid BalumasRequest request, BindingResult bindingResult){
+	public BusinessResultData balumasQualification(@Valid BalumasQualificationRequest reqBody, BindingResult bindingResult){
 		logger.info(Tools.getUUID());
         /* 校验请求数据 */
         checkValidation(bindingResult);
         /* 调用服务层 */
-        BalumasResp balumasResp = balumasService.findBalumasInfo(request);
-        BusinessResultData respBody = new BusinessResultData(Constant.SUCCESS, Constant.NOTIFY_SUCCESS, balumasResp);
+        balumasService.balumasQualification(reqBody);
+        BusinessResultData respBody = new BusinessResultData();
 		return respBody;
 	}
 
