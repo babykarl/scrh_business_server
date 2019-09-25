@@ -55,6 +55,10 @@ public class HouseInfoModel {
 	 * 是否可以办理居住证
 	 */
 	private Integer residencePermit;
+	/**
+	 * 发布角色1：转租人2：房东3：其它
+	 */
+	private Integer publishRole;
 	public String getUserId() {
 		return userId;
 	}
@@ -126,6 +130,12 @@ public class HouseInfoModel {
 	}
 	public void setResidencePermit(Integer residencePermit) {
 		this.residencePermit = residencePermit;
+	}
+	public Integer getPublishRole() {
+		return publishRole;
+	}
+	public void setPublishRole(Integer publishRole) {
+		this.publishRole = publishRole;
 	}
 	
 }

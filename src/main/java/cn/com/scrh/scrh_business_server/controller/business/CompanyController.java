@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,7 @@ import cn.com.scrh.scrh_business_server.service.CompanyService;
  *
  */
 @RestController
+@RequestMapping(value = "/v1/api/scrh_server/")
 public class CompanyController extends BaseController {
 	/**
 	 * 企业相关服务service
@@ -37,8 +39,8 @@ public class CompanyController extends BaseController {
 	 *            校验结果
 	 * @return 认证结果
 	 */
-	@RequestMapping(value = "aaa", method = RequestMethod.GET)
-	public BusinessResultData companyQualification(@Valid CompanyQualificationRequest reqBody,
+	@RequestMapping(value = "user/company", method = RequestMethod.POST)
+	public BusinessResultData companyQualification(@Valid @RequestBody CompanyQualificationRequest reqBody,
 			BindingResult bindingResult) {
 		logger.info(Tools.getUUID());
 		/* 校验请求数据 */

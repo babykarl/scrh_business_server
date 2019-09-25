@@ -26,7 +26,7 @@ public interface HouseMapper {
 			"select h.id, b.pict_url, b.area, b.room_number, b.saloon_number, b.bathroom_number,",
 			"h.price,h.address,h.crt_time,h.alter_times",
 			"from scrh_basic_house_info as b, scrh_house_publish_info as h", "<where>",
-			"h.status=1 and h.city_id=#{cityId, jdbcType=VARCHAR}",
+			"h.status=1 and h.city_id=#{cityId, jdbcType=VARCHAR}, and h.publish_role = #{publishRole, jdbcType=INTEGER}",
 			"<if test='metroId!=null'> and h.metro_id = #{metroId, jdbcType=VARCHAR}</if>",
 			"<if test='districtId!=null'> and h.city_district_id = #{districtId, jdbcType=VARCHAR}</if>",
 			"<if test='minPrice!=null'> and h.price &gt;= #{minPrice, jdbcType=INTEGER}</if>",

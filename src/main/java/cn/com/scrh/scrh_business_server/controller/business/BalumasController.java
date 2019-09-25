@@ -7,18 +7,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import cn.com.scrh.scrh_business_server.commons.Constant;
 import cn.com.scrh.scrh_business_server.commons.Tools;
 import cn.com.scrh.scrh_business_server.controller.BaseController;
 import cn.com.scrh.scrh_business_server.model.BusinessResultData;
 import cn.com.scrh.scrh_business_server.model.balumas.BalumasQualificationRequest;
-import cn.com.scrh.scrh_business_server.model.balumas.BalumasRequest;
-import cn.com.scrh.scrh_business_server.model.balumas.BalumasResp;
 import cn.com.scrh.scrh_business_server.service.BalumasService;
 
 /**
@@ -29,6 +26,7 @@ import cn.com.scrh.scrh_business_server.service.BalumasService;
 */
 
 @RestController
+@RequestMapping(value = "/v1/api/scrh_server/")
 public class BalumasController extends BaseController {
 	
 	private final static Logger logger = LoggerFactory.getLogger(BalumasController.class);
@@ -42,8 +40,8 @@ public class BalumasController extends BaseController {
 	 * @param bindingResult 校验结果
 	 * @return 认证结果
 	 */
-	@RequestMapping(value = "aaa", method = RequestMethod.GET)
-	public BusinessResultData balumasQualification(@Valid BalumasQualificationRequest reqBody, BindingResult bindingResult){
+	@RequestMapping(value = "user/balumas", method = RequestMethod.POST)
+	public BusinessResultData balumasQualification(@Valid @RequestBody BalumasQualificationRequest reqBody, BindingResult bindingResult){
 		logger.info(Tools.getUUID());
         /* 校验请求数据 */
         checkValidation(bindingResult);

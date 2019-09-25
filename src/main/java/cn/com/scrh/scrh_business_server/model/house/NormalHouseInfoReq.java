@@ -89,6 +89,13 @@ public class NormalHouseInfoReq {
     @Max(value = 2147483647, message = "超出int类型最大值")
     @Pattern(regexp = "^[0-9]+$", message = "分页pageSize格式错误，只能由数字组成")
     private String pageSize;
+    
+    /**
+     * 发布角色1：转租人2：房东3：其它
+     */
+    @NotBlank(message = "发布角色不能为空")
+    @Pattern(regexp = "^[1|2|3]{1}$", message = "只能为1,2,3")
+    private String publishRole;
 	public String getUserId() {
 		return userId;
 	}
@@ -174,4 +181,11 @@ public class NormalHouseInfoReq {
 	public void setPageSize(String pageSize) {
 		this.pageSize = pageSize;
 	}
+	public String getPublishRole() {
+		return publishRole;
+	}
+	public void setPublishRole(String publishRole) {
+		this.publishRole = publishRole;
+	}
+	
 }

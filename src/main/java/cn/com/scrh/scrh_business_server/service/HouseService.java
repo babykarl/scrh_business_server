@@ -66,6 +66,7 @@ public class HouseService {
 		if (reqBody.getResidencePermit() != null) {
 			houseInfoModel.setResidencePermit(Integer.parseInt(reqBody.getResidencePermit()));
 		}
+		houseInfoModel.setPublishRole(Integer.parseInt(reqBody.getPublishRole()));
 		Page<HouseInfoModelResp> page = null;
 		page = (Page<HouseInfoModelResp>) houseDao.findNormalHouseInfo(houseInfoModel, pageNum, pageSize);
 		if (page.size() == 0) {
